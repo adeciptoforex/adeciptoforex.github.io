@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <title>CRUD Table with Auto Refresh</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,8 +44,12 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Hari</th>
+                <th>Tanggal</th>
+                <th>Pukul</th>
+                <th>Nama Kegiatan</th>
+                <th>Tempat</th>
+                <th>Keterangan</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -75,6 +79,10 @@
                     <td>${index + 1}</td>
                     <td>${item.name}</td>
                     <td>${item.email}</td>
+                    <td>${item.column4 || ''}</td>
+                    <td>${item.column5 || ''}</td>
+                    <td>${item.column6 || ''}</td>
+                    <td>${item.column7 || ''}</td>
                     <td>
                         <button onclick="editData(${index})">Edit</button>
                         <button onclick="deleteData(${index})">Delete</button>
@@ -125,15 +133,15 @@
 
         // Initialize initial data
         data = [
-            { name: 'John Doe', email: 'john@example.com' },
-            { name: 'Jane Doe', email: 'jane@example.com' },
+            { name: 'John Doe', email: 'john@example.com', column4: 'Value4', column5: 'Value5', column6: 'Value6', column7: 'Value7' },
+            { name: 'Jane Doe', email: 'jane@example.com', column4: 'Value4', column5: 'Value5', column6: 'Value6', column7: 'Value7' },
         ];
 
         // Display the initial table
         renderTable();
 
         // Set interval for auto-refresh (every 5 seconds in this example)
-        setInterval(autoRefresh, 5000);
+        setInterval(autoRefresh, 1000);
     </script>
 
 </body>
