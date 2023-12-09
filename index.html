@@ -3,124 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login dan Registrasi</title>
+    <title>Member Area</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
             margin: 0;
-            background-image: url('https://example.com/path-to-your-cloud-image.jpg');
-            background-size: cover;
+            padding: 0;
+            background-color: #f4f4f4;
         }
 
-        form {
-            max-width: 400px;
-            margin: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-        }
-
-        button {
-            background-color: #4CAF50;
+        header {
+            background-color: #333;
             color: white;
             padding: 10px;
-            border: none;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-        #register-link, #login-link {
-            display: block;
             text-align: center;
-            margin-top: 10px;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
             color: #333;
-            text-decoration: underline;
-            cursor: pointer;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <form id="loginForm">
-        <h2>Login</h2>
-        <label for="loginUsername">Username:</label>
-        <input type="text" id="loginUsername" name="loginUsername" required>
+    <header>
+        <h1>Member Area</h1>
+    </header>
 
-        <label for="loginPassword">Password:</label>
-        <input type="password" id="loginPassword" name="loginPassword" required>
+    <section>
+        <h2>Selamat datang, [Nama Member]!</h2>
+        <p>Anda memiliki akses ke berbagai fitur eksklusif sebagai member.</p>
 
-        <button type="submit">Login</button>
-        <p id="loginMessage"></p>
+        <h3>Fitur Member:</h3>
+        <ul>
+            <li>Profil Anda</li>
+            <li>Riwayat Transaksi</li>
+            <li>Unduh Materi Eksklusif</li>
+            <!-- Tambahkan fitur lain sesuai kebutuhan -->
+        </ul>
+    </section>
 
-        <a href="#" id="register-link">Belum punya akun? Registrasi di sini.</a>
-    </form>
-
-    <form id="registerForm" style="display: none;">
-        <h2>Registrasi</h2>
-        <label for="registerUsername">Username:</label>
-        <input type="text" id="registerUsername" name="registerUsername" required>
-
-        <label for="registerPassword">Password:</label>
-        <input type="password" id="registerPassword" name="registerPassword" required>
-
-        <button type="submit">Registrasi</button>
-        <p id="registerMessage"></p>
-
-        <a href="#" id="login-link">Sudah punya akun? Login di sini.</a>
-    </form>
-
-    <script>
-        const loginForm = document.getElementById("loginForm");
-        const registerForm = document.getElementById("registerForm");
-        const loginLink = document.getElementById("login-link");
-        const registerLink = document.getElementById("register-link");
-
-        loginForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const username = document.getElementById("loginUsername").value;
-            const password = document.getElementById("loginPassword").value;
-
-            // Lakukan autentikasi login di sini (contoh sederhana menggunakan alert)
-            alert(`Login berhasil! Username: ${username}, Password: ${password}`);
-        });
-
-        registerForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-            const username = document.getElementById("registerUsername").value;
-            const password = document.getElementById("registerPassword").value;
-
-            // Lakukan proses registrasi di sini (contoh sederhana menggunakan alert)
-            alert(`Registrasi berhasil! Username: ${username}, Password: ${password}`);
-        });
-
-        loginLink.addEventListener("click", function (event) {
-            event.preventDefault();
-            loginForm.style.display = "block";
-            registerForm.style.display = "none";
-        });
-
-        registerLink.addEventListener("click", function (event) {
-            event.preventDefault();
-            loginForm.style.display = "none";
-            registerForm.style.display = "block";
-        });
-    </script>
+    <footer>
+        &copy; 2023 Member Area. Hak Cipta Dilindungi.
+    </footer>
 
 </body>
 </html>
