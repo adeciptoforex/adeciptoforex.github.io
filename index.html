@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitur Dinamis</title>
+    <title>CRUD Table</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,41 +11,122 @@
             margin: 20px;
         }
 
-        #dynamicContent {
-            color: #333;
-            font-size: 18px;
-            margin-top: 20px;
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
         }
 
         button {
-            padding: 10px;
-            font-size: 16px;
+            padding: 8px;
+            font-size: 14px;
             cursor: pointer;
-            margin: 10px;
+            margin: 5px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Fitur Dinamis dengan HTML dan JavaScript</h1>
+    <h1>CRUD Table</h1>
 
-    <button onclick="changeText()">Ubah Teks</button>
-    <button onclick="toggleVisibility()">Ganti Visibilitas</button>
+    <table id="crudTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data akan ditampilkan di sini -->
+        </tbody>
+    </table>
 
-    <div id="dynamicContent">
-        <p>Ini adalah teks dinamis.</p>
-    </div>
+    <form id="crudForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        <button type="button" onclick="addData()">Add</button>
+    </form>
 
     <script>
-        function changeText() {
-            const dynamicContent = document.getElementById('dynamicContent');
-            dynamicContent.innerHTML = '<p>Teks telah diubah!</p>';
+        let data = [];
+
+        function renderTable() {
+            const tableBody = document.querySelector('#crudTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.name}</td>
+                    <td>${item.email}</td>
+                    <td>
+                        <button onclick="editData(${index})">Edit</button>
+                        <button onclick="deleteData(${index})">Delete</button>
+                    </td>
+                `;
+            });
         }
 
-        function toggleVisibility() {
-            const dynamicContent = document.getElementById('dynamicContent');
-            dynamicContent.style.display = (dynamicContent.style.display === 'none' || dynamicContent.style.display === '') ? 'block' : 'none';
+        function addData() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            if (name && email) {
+                data.push({ name, email });
+                renderTable();
+                clearForm();
+            }
         }
+
+        function editData(index) {
+            const item = data[index];
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+
+            nameInput.value = item.name;
+            emailInput.value = item.email;
+
+            // Hapus item yang akan diedit dari array
+            data.splice(index, 1);
+
+            renderTable();
+        }
+
+        function deleteData(index) {
+            // Hapus item dari array
+            data.splice(index, 1);
+
+            renderTable();
+        }
+
+        function clearForm() {
+            document.getElementById('crudForm').reset();
+        }
+
+        // Inisialisasi data awal
+        data = [
+            { name: 'John Doe', email: 'john@example.com' },
+            { name: 'Jane Doe', email: 'jane@example.com' },
+        ];
+
+        // Tampilkan tabel awal
+        renderTable();
     </script>
 
 </body>
