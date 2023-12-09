@@ -5,9 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URAIAN KEGIATAN KADIS DISDUKCAPIL PROV KALBAR</title>
     <style>
-        form-box {
-        margin-bottom: 10px;
-           }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -31,11 +28,32 @@
             color: white;
         }
 
+        form {
+            width: 50%;
+            margin: 20px auto;
+            text-align: left;
+        }
+
+        .form-box {
+            margin-bottom: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
         button {
             padding: 8px;
             font-size: 14px;
             cursor: pointer;
-            margin: 5px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -62,130 +80,30 @@
     </table>
 
     <form id="crudForm">
-    <div class="form-box">
-        <label for="hari">Hari:</label>
-        <input type="text" id="hari" required>
-    </div>
+        <div class="form-box">
+            <label for="hari">Hari:</label>
+            <input type="text" id="hari" required>
+        </div>
 
-    <div class="form-box">
-        <label for="tanggal">Tanggal:</label>
-        <input type="text" id="tanggal" required>
-    </div>
+        <div class="form-box">
+            <label for="tanggal">Tanggal:</label>
+            <input type="text" id="tanggal" required>
+        </div>
 
-    <div class="form-box">
-        <label for="pukul">Pukul:</label>
-        <input type="text" id="pukul" required>
-    </div>
+        <div class="form-box">
+            <label for="pukul">Pukul:</label>
+            <input type="text" id="pukul" required>
+        </div>
 
-    <div class="form-box">
-        <label for="namaKegiatan">Nama Kegiatan:</label>
-        <input type="text" id="namaKegiatan" required>
-    </div>
+        <div class="form-box">
+            <label for="namaKegiatan">Nama Kegiatan:</label>
+            <input type="text" id="namaKegiatan" required>
+        </div>
 
-    <div class="form-box">
-        <label for="tempat">Tempat:</label>
-        <input type="text" id="tempat" required>
-    </div>
+        <div class="form-box">
+            <label for="tempat">Tempat:</label>
+            <input type="text" id="tempat" required>
+        </div>
 
-    <div class="form-box">
-        <label for="keterangan">Keterangan:</label>
-        <input type="text" id="keterangan" required>
-    </div>
-
-    <button type="button" onclick="addData()">Add</button>
-</form>
-
-
-
-    <script>
-        let data = [];
-
-        function renderTable() {
-            const tableBody = document.querySelector('#crudTable tbody');
-            tableBody.innerHTML = '';
-
-            data.forEach((item, index) => {
-                const row = tableBody.insertRow();
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${item.hari}</td>
-                    <td>${item.tanggal}</td>
-                    <td>${item.pukul}</td>
-                    <td>${item.namaKegiatan}</td>
-                    <td>${item.tempat}</td>
-                    <td>${item.keterangan}</td>
-                    <td>
-                        <button onclick="editData(${index})">Edit</button>
-                        <button onclick="deleteData(${index})">Delete</button>
-                    </td>
-                `;
-            });
-        }
-
-        function addData() {
-            const hari = document.getElementById('hari').value;
-            const tanggal = document.getElementById('tanggal').value;
-            const pukul = document.getElementById('pukul').value;
-            const namaKegiatan = document.getElementById('namaKegiatan').value;
-            const tempat = document.getElementById('tempat').value;
-            const keterangan = document.getElementById('keterangan').value;
-
-            if (hari && tanggal && pukul && namaKegiatan && tempat && keterangan) {
-                data.push({ hari, tanggal, pukul, namaKegiatan, tempat, keterangan });
-                renderTable();
-                clearForm();
-            }
-        }
-
-        function editData(index) {
-            const item = data[index];
-            const hariInput = document.getElementById('hari');
-            const tanggalInput = document.getElementById('tanggal');
-            const pukulInput = document.getElementById('pukul');
-            const namaKegiatanInput = document.getElementById('namaKegiatan');
-            const tempatInput = document.getElementById('tempat');
-            const keteranganInput = document.getElementById('keterangan');
-
-            hariInput.value = item.hari;
-            tanggalInput.value = item.tanggal;
-            pukulInput.value = item.pukul;
-            namaKegiatanInput.value = item.namaKegiatan;
-            tempatInput.value = item.tempat;
-            keteranganInput.value = item.keterangan;
-
-            // Remove the item being edited from the array
-            data.splice(index, 1);
-
-            renderTable();
-        }
-
-        function deleteData(index) {
-            // Remove the item from the array
-            data.splice(index, 1);
-
-            renderTable();
-        }
-
-        function clearForm() {
-            document.getElementById('crudForm').reset();
-        }
-
-        function autoRefresh() {
-            renderTable();
-        }
-
-        // Initialize initial data
-        data = [
-            { hari: 'Senin', tanggal: '01-01-2023', pukul: '10:00', namaKegiatan: 'Meeting', tempat: 'Kantor', keterangan: 'Rapat tim' },
-            { hari: 'Selasa', tanggal: '02-01-2023', pukul: '14:00', namaKegiatan: 'Pelatihan', tempat: 'Aula', keterangan: 'Pelatihan teknis' },
-        ];
-
-        // Display the initial table
-        renderTable();
-
-        // Set interval for auto-refresh (every 1 second in this example)
-        setInterval(autoRefresh, 1000);
-    </script>
-
-</body>
-</html>
+        <div class="form-box">
+            <label for="keterangan">Keterangan:</
