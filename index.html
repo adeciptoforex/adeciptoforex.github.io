@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Table with Auto Refresh</title>
+    <title>URAIAN KEGIATAN KADIS DISDUKCAPIL PROV KALBAR</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-    <h1>CRUD Table with Auto Refresh</h1>
+    <h1>URAIAN KEGIATAN KADIS DISDUKCAPIL PROV KALBAR</h1>
 
     <table id="crudTable">
         <thead>
@@ -59,18 +59,18 @@
     </table>
 
     <form id="crudForm">
-        <label for="name">Hari:</label>
-        <input type="text" id="name" required>
-        <label for="email">Tanggal:</label>
-        <input type="email" id="email" required>
-        <label for="column4">Pukul:</label>
-        <input type="column4" id="column4" required>
-        <label for="column5">Nama Kegiatan:</label>
-        <input type="column5" id="column5" required>
-        <label for="column6">Tempat:</label>
-        <input type="column6" id="column6" required>
-        <label for="column7">Keterangan:</label>
-        <input type="column7" id="column7" required>
+        <label for="hari">Hari:</label>
+        <input type="text" id="hari" required>
+        <label for="tanggal">Tanggal:</label>
+        <input type="text" id="tanggal" required>
+        <label for="pukul">Pukul:</label>
+        <input type="text" id="pukul" required>
+        <label for="namaKegiatan">Nama Kegiatan:</label>
+        <input type="text" id="namaKegiatan" required>
+        <label for="tempat">Tempat:</label>
+        <input type="text" id="tempat" required>
+        <label for="keterangan">Keterangan:</label>
+        <input type="text" id="keterangan" required>
         <button type="button" onclick="addData()">Add</button>
     </form>
 
@@ -85,12 +85,12 @@
                 const row = tableBody.insertRow();
                 row.innerHTML = `
                     <td>${index + 1}</td>
-                    <td>${item.name}</td>
-                    <td>${item.email}</td>
-                    <td>${item.column4 || ''}</td>
-                    <td>${item.column5 || ''}</td>
-                    <td>${item.column6 || ''}</td>
-                    <td>${item.column7 || ''}</td>
+                    <td>${item.hari}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${item.pukul}</td>
+                    <td>${item.namaKegiatan}</td>
+                    <td>${item.tempat}</td>
+                    <td>${item.keterangan}</td>
                     <td>
                         <button onclick="editData(${index})">Edit</button>
                         <button onclick="deleteData(${index})">Delete</button>
@@ -100,11 +100,15 @@
         }
 
         function addData() {
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
+            const hari = document.getElementById('hari').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const pukul = document.getElementById('pukul').value;
+            const namaKegiatan = document.getElementById('namaKegiatan').value;
+            const tempat = document.getElementById('tempat').value;
+            const keterangan = document.getElementById('keterangan').value;
 
-            if (name && email) {
-                data.push({ name, email });
+            if (hari && tanggal && pukul && namaKegiatan && tempat && keterangan) {
+                data.push({ hari, tanggal, pukul, namaKegiatan, tempat, keterangan });
                 renderTable();
                 clearForm();
             }
@@ -112,11 +116,19 @@
 
         function editData(index) {
             const item = data[index];
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
+            const hariInput = document.getElementById('hari');
+            const tanggalInput = document.getElementById('tanggal');
+            const pukulInput = document.getElementById('pukul');
+            const namaKegiatanInput = document.getElementById('namaKegiatan');
+            const tempatInput = document.getElementById('tempat');
+            const keteranganInput = document.getElementById('keterangan');
 
-            nameInput.value = item.name;
-            emailInput.value = item.email;
+            hariInput.value = item.hari;
+            tanggalInput.value = item.tanggal;
+            pukulInput.value = item.pukul;
+            namaKegiatanInput.value = item.namaKegiatan;
+            tempatInput.value = item.tempat;
+            keteranganInput.value = item.keterangan;
 
             // Remove the item being edited from the array
             data.splice(index, 1);
@@ -141,14 +153,14 @@
 
         // Initialize initial data
         data = [
-            { name: 'John Doe', email: 'john@example.com', column4: 'Value4', column5: 'Value5', column6: 'Value6', column7: 'Value7' },
-            { name: 'Jane Doe', email: 'jane@example.com', column4: 'Value4', column5: 'Value5', column6: 'Value6', column7: 'Value7' },
+            { hari: 'Senin', tanggal: '01-01-2023', pukul: '10:00', namaKegiatan: 'Meeting', tempat: 'Kantor', keterangan: 'Rapat tim' },
+            { hari: 'Selasa', tanggal: '02-01-2023', pukul: '14:00', namaKegiatan: 'Pelatihan', tempat: 'Aula', keterangan: 'Pelatihan teknis' },
         ];
 
         // Display the initial table
         renderTable();
 
-        // Set interval for auto-refresh (every 5 seconds in this example)
+        // Set interval for auto-refresh (every 1 second in this example)
         setInterval(autoRefresh, 1000);
     </script>
 
