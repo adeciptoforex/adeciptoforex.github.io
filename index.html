@@ -1,55 +1,61 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member Area</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Page Frame</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-weight: bold;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
 </head>
 <body>
 
     <header>
-        <h1>Member Area</h1>
+        <h1>Page Frame</h1>
     </header>
 
-    <section id="main-section">
-        <div id="login-form">
-            <h2>Login</h2>
-            <label for="loginUsername">Username:</label>
-            <input type="text" id="loginUsername" name="loginUsername" required>
+    <nav>
+        <a href="page1.html" target="contentFrame">Page 1</a>
+        <a href="page2.html" target="contentFrame">Page 2</a>
+        <!-- Tambahkan tautan ke halaman lain sesuai kebutuhan -->
+    </nav>
 
-            <label for="loginPassword">Password:</label>
-            <input type="password" id="loginPassword" name="loginPassword" required>
+    <main>
+        <iframe name="contentFrame" src="page1.html"></iframe>
+    </main>
 
-            <button onclick="login()">Login</button>
-            <p id="loginMessage"></p>
-
-            <a href="#" onclick="showRegisterForm()">Belum punya akun? Registrasi di sini.</a>
-        </div>
-
-        <div id="register-form" style="display: none;">
-            <h2>Registrasi</h2>
-            <label for="registerUsername">Username:</label>
-            <input type="text" id="registerUsername" name="registerUsername" required>
-
-            <label for="registerPassword">Password:</label>
-            <input type="password" id="registerPassword" name="registerPassword" required>
-
-            <label for="registerEmail">Email:</label>
-            <input type="email" id="registerEmail" name="registerEmail" required>
-
-            <button onclick="register()">Registrasi</button>
-            <p id="registerMessage"></p>
-
-            <a href="#" onclick="showLoginForm()">Sudah punya akun? Login di sini.</a>
-        </div>
-    </section>
-
-    <footer>
-        &copy; 2023 Member Area. Hak Cipta Dilindungi.
-    </footer>
-
-    <script src="scripts.js"></script>
 </body>
 </html>
