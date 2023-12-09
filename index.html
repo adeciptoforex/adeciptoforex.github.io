@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>URAIAN KEGIATAN KADIS DISDUKCAPIL PROV KALBAR</title>
     <style>
+        form-box {
+        margin-bottom: 10px;
+           }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
@@ -59,32 +62,39 @@
     </table>
 
     <form id="crudForm">
-    <label for="hari">Hari:</label>
-    <input type="text" id="hari" required>
-    <br>
+    <div class="form-box">
+        <label for="hari">Hari:</label>
+        <input type="text" id="hari" required>
+    </div>
 
-    <label for="tanggal">Tanggal:</label>
-    <input type="text" id="tanggal" required>
-    <br>
+    <div class="form-box">
+        <label for="tanggal">Tanggal:</label>
+        <input type="text" id="tanggal" required>
+    </div>
 
-    <label for="pukul">Pukul:</label>
-    <input type="text" id="pukul" required>
-    <br>
+    <div class="form-box">
+        <label for="pukul">Pukul:</label>
+        <input type="text" id="pukul" required>
+    </div>
 
-    <label for="namaKegiatan">Nama Kegiatan:</label>
-    <input type="text" id="namaKegiatan" required>
-    <br>
+    <div class="form-box">
+        <label for="namaKegiatan">Nama Kegiatan:</label>
+        <input type="text" id="namaKegiatan" required>
+    </div>
 
-    <label for="tempat">Tempat:</label>
-    <input type="text" id="tempat" required>
-    <br>
+    <div class="form-box">
+        <label for="tempat">Tempat:</label>
+        <input type="text" id="tempat" required>
+    </div>
 
-    <label for="keterangan">Keterangan:</label>
-    <input type="text" id="keterangan" required>
-    <br>
+    <div class="form-box">
+        <label for="keterangan">Keterangan:</label>
+        <input type="text" id="keterangan" required>
+    </div>
 
     <button type="button" onclick="addData()">Add</button>
 </form>
+
 
 
     <script>
