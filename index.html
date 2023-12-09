@@ -1,56 +1,11 @@
+<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Area</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: white;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            color: #333;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -58,22 +13,43 @@
         <h1>Member Area</h1>
     </header>
 
-    <section>
-        <h2>Selamat datang, [Nama Member]!</h2>
-        <p>Anda memiliki akses ke berbagai fitur eksklusif sebagai member.</p>
+    <section id="main-section">
+        <div id="login-form">
+            <h2>Login</h2>
+            <label for="loginUsername">Username:</label>
+            <input type="text" id="loginUsername" name="loginUsername" required>
 
-        <h3>Fitur Member:</h3>
-        <ul>
-            <li>Profil Anda</li>
-            <li>Riwayat Transaksi</li>
-            <li>Unduh Materi Eksklusif</li>
-            <!-- Tambahkan fitur lain sesuai kebutuhan -->
-        </ul>
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="loginPassword" required>
+
+            <button onclick="login()">Login</button>
+            <p id="loginMessage"></p>
+
+            <a href="#" onclick="showRegisterForm()">Belum punya akun? Registrasi di sini.</a>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h2>Registrasi</h2>
+            <label for="registerUsername">Username:</label>
+            <input type="text" id="registerUsername" name="registerUsername" required>
+
+            <label for="registerPassword">Password:</label>
+            <input type="password" id="registerPassword" name="registerPassword" required>
+
+            <label for="registerEmail">Email:</label>
+            <input type="email" id="registerEmail" name="registerEmail" required>
+
+            <button onclick="register()">Registrasi</button>
+            <p id="registerMessage"></p>
+
+            <a href="#" onclick="showLoginForm()">Sudah punya akun? Login di sini.</a>
+        </div>
     </section>
 
     <footer>
         &copy; 2023 Member Area. Hak Cipta Dilindungi.
     </footer>
 
+    <script src="scripts.js"></script>
 </body>
 </html>
