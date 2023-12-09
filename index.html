@@ -106,12 +106,14 @@
         </div>
 
         <div class="form-box">
-            <label for="keterangan">Keterangan:</div>
+            <label for="keterangan">Keterangan:</label>
+            <input type="text" id="keterangan" required>
+        </div>
 
         <button type="button" onclick="addData()">Add</button>
     </form>
 
-                <script>
+    <script>
         let data = [];
 
         function renderTable() {
@@ -183,23 +185,14 @@
         function clearForm() {
             document.getElementById('crudForm').reset();
         }
-
-        function autoRefresh() {
-            renderTable();
-        }
-
+        
         // Initialize initial data
         data = [
-            { hari: 'Senin', tanggal: '01-01-2023', pukul: '10:00', namaKegiatan: 'Meeting', tempat: 'Kantor', keterangan: 'Rapat tim' },
-            { hari: 'Selasa', tanggal: '02-01-2023', pukul: '14:00', namaKegiatan: 'Pelatihan', tempat: 'Aula', keterangan: 'Pelatihan teknis' },
-        ];
+            ];
 
         // Display the initial table
         renderTable();
-
-        // Set interval for auto-refresh (every 1 second in this example)
-        setInterval(autoRefresh, 1000);
     </script>
 
-    </body>
+</body>
 </html>
