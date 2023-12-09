@@ -106,4 +106,100 @@
         </div>
 
         <div class="form-box">
-            <label for="keterangan">Keterangan:</
+            <label for="keterangan">Keterangan:</div>
+
+        <button type="button" onclick="addData()">Add</button>
+    </form>
+
+                <script>
+        let data = [];
+
+        function renderTable() {
+            const tableBody = document.querySelector('#crudTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach((item, index) => {
+                const row = tableBody.insertRow();
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${item.hari}</td>
+                    <td>${item.tanggal}</td>
+                    <td>${item.pukul}</td>
+                    <td>${item.namaKegiatan}</td>
+                    <td>${item.tempat}</td>
+                    <td>${item.keterangan}</td>
+                    <td>
+                        <button onclick="editData(${index})">Edit</button>
+                        <button onclick="deleteData(${index})">Delete</button>
+                    </td>
+                `;
+            });
+        }
+
+        function addData() {
+            const hari = document.getElementById('hari').value;
+            const tanggal = document.getElementById('tanggal').value;
+            const pukul = document.getElementById('pukul').value;
+            const namaKegiatan = document.getElementById('namaKegiatan').value;
+            const tempat = document.getElementById('tempat').value;
+            const keterangan = document.getElementById('keterangan').value;
+
+            if (hari && tanggal && pukul && namaKegiatan && tempat && keterangan) {
+                data.push({ hari, tanggal, pukul, namaKegiatan, tempat, keterangan });
+                renderTable();
+                clearForm();
+            }
+        }
+
+        function editData(index) {
+            const item = data[index];
+            const hariInput = document.getElementById('hari');
+            const tanggalInput = document.getElementById('tanggal');
+            const pukulInput = document.getElementById('pukul');
+            const namaKegiatanInput = document.getElementById('namaKegiatan');
+            const tempatInput = document.getElementById('tempat');
+            const keteranganInput = document.getElementById('keterangan');
+
+            hariInput.value = item.hari;
+            tanggalInput.value = item.tanggal;
+            pukulInput.value = item.pukul;
+            namaKegiatanInput.value = item.namaKegiatan;
+            tempatInput.value = item.tempat;
+            keteranganInput.value = item.keterangan;
+
+            // Remove the item being edited from the array
+            data.splice(index, 1);
+
+            renderTable();
+        }
+
+        function deleteData(index) {
+            // Remove the item from the array
+            data.splice(index, 1);
+
+            renderTable();
+        }
+
+        function clearForm() {
+            document.getElementById('crudForm').reset();
+        }
+
+        function autoRefresh() {
+            renderTable();
+        }
+
+        // Initialize initial data
+        data = [
+            { hari: 'Senin', tanggal: '01-01-2023', pukul: '10:00', namaKegiatan: 'Meeting', tempat: 'Kantor', keterangan: 'Rapat tim' },
+            { hari: 'Selasa', tanggal: '02-01-2023', pukul: '14:00', namaKegiatan: 'Pelatihan', tempat: 'Aula', keterangan: 'Pelatihan teknis' },
+        ];
+
+        // Display the initial table
+        renderTable();
+
+        // Set interval for auto-refresh (every 1 second in this example)
+        setInterval(autoRefresh, 1000);
+    </script>
+
+    </body>
+</html>
