@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Table</title>
+    <title>register</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-    <h1>CRUD Table</h1>
+    <h1>CRUD Table with Auto Refresh</h1>
 
     <table id="crudTable">
         <thead>
@@ -50,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Data akan ditampilkan di sini -->
+            <!-- Data will be displayed here -->
         </tbody>
     </table>
 
@@ -102,14 +102,14 @@
             nameInput.value = item.name;
             emailInput.value = item.email;
 
-            // Hapus item yang akan diedit dari array
+            // Remove the item being edited from the array
             data.splice(index, 1);
 
             renderTable();
         }
 
         function deleteData(index) {
-            // Hapus item dari array
+            // Remove the item from the array
             data.splice(index, 1);
 
             renderTable();
@@ -119,14 +119,21 @@
             document.getElementById('crudForm').reset();
         }
 
-        // Inisialisasi data awal
+        function autoRefresh() {
+            renderTable();
+        }
+
+        // Initialize initial data
         data = [
             { name: 'John Doe', email: 'john@example.com' },
             { name: 'Jane Doe', email: 'jane@example.com' },
         ];
 
-        // Tampilkan tabel awal
+        // Display the initial table
         renderTable();
+
+        // Set interval for auto-refresh (every 5 seconds in this example)
+        setInterval(autoRefresh, 5000);
     </script>
 
 </body>
